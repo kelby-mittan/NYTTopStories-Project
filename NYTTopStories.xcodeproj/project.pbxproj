@@ -13,6 +13,9 @@
 		02822E7B23EC6B6E001B55AD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 02822E7923EC6B6E001B55AD /* LaunchScreen.storyboard */; };
 		02822E8623EC6B6E001B55AD /* NYTTopStoriesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02822E8523EC6B6E001B55AD /* NYTTopStoriesTests.swift */; };
 		02822E9223EC6C33001B55AD /* TopStoriesTabController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02822E9123EC6C33001B55AD /* TopStoriesTabController.swift */; };
+		02822E9723EC6E56001B55AD /* NewsFeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02822E9623EC6E56001B55AD /* NewsFeedViewController.swift */; };
+		02822E9923EC6E72001B55AD /* SavedArticleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02822E9823EC6E72001B55AD /* SavedArticleViewController.swift */; };
+		02822E9B23EC6E89001B55AD /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02822E9A23EC6E89001B55AD /* SettingsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +39,9 @@
 		02822E8523EC6B6E001B55AD /* NYTTopStoriesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NYTTopStoriesTests.swift; sourceTree = "<group>"; };
 		02822E8723EC6B6E001B55AD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		02822E9123EC6C33001B55AD /* TopStoriesTabController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopStoriesTabController.swift; sourceTree = "<group>"; };
+		02822E9623EC6E56001B55AD /* NewsFeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsFeedViewController.swift; sourceTree = "<group>"; };
+		02822E9823EC6E72001B55AD /* SavedArticleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedArticleViewController.swift; sourceTree = "<group>"; };
+		02822E9A23EC6E89001B55AD /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,11 +83,10 @@
 		02822E6D23EC6B65001B55AD /* NYTTopStories */ = {
 			isa = PBXGroup;
 			children = (
+				02822E9523EC6E32001B55AD /* Models */,
+				02822E9323EC6DEB001B55AD /* Views */,
 				02822E9023EC6C11001B55AD /* Controllers */,
-				02822E6E23EC6B65001B55AD /* AppDelegate.swift */,
-				02822E7023EC6B65001B55AD /* SceneDelegate.swift */,
-				02822E7723EC6B6E001B55AD /* Assets.xcassets */,
-				02822E7923EC6B6E001B55AD /* LaunchScreen.storyboard */,
+				02822E9423EC6E02001B55AD /* Supporting Files */,
 				02822E7C23EC6B6E001B55AD /* Info.plist */,
 			);
 			path = NYTTopStories;
@@ -100,8 +105,36 @@
 			isa = PBXGroup;
 			children = (
 				02822E9123EC6C33001B55AD /* TopStoriesTabController.swift */,
+				02822E9623EC6E56001B55AD /* NewsFeedViewController.swift */,
+				02822E9823EC6E72001B55AD /* SavedArticleViewController.swift */,
+				02822E9A23EC6E89001B55AD /* SettingsViewController.swift */,
 			);
 			path = Controllers;
+			sourceTree = "<group>";
+		};
+		02822E9323EC6DEB001B55AD /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		02822E9423EC6E02001B55AD /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				02822E6E23EC6B65001B55AD /* AppDelegate.swift */,
+				02822E7023EC6B65001B55AD /* SceneDelegate.swift */,
+				02822E7723EC6B6E001B55AD /* Assets.xcassets */,
+				02822E7923EC6B6E001B55AD /* LaunchScreen.storyboard */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		02822E9523EC6E32001B55AD /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -205,8 +238,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				02822E6F23EC6B65001B55AD /* AppDelegate.swift in Sources */,
+				02822E9923EC6E72001B55AD /* SavedArticleViewController.swift in Sources */,
 				02822E9223EC6C33001B55AD /* TopStoriesTabController.swift in Sources */,
 				02822E7123EC6B65001B55AD /* SceneDelegate.swift in Sources */,
+				02822E9723EC6E56001B55AD /* NewsFeedViewController.swift in Sources */,
+				02822E9B23EC6E89001B55AD /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
