@@ -12,7 +12,7 @@ import NetworkHelper
 struct NYTAPIClient {
     
     static func fetchTopStories(for category: String, completion: @escaping (Result<[Article], AppError>) -> ()) {
-        let NYTEndpointURL = "https://api.nytimes.com/svc/topstories/v2/\(category).json?api-key="
+        let NYTEndpointURL = "https://api.nytimes.com/svc/topstories/v2/\(category).json?api-key=\(APIKey.nytKey)"
         
         guard let url = URL(string: NYTEndpointURL) else {
             completion(.failure(.badURL(NYTEndpointURL)))
