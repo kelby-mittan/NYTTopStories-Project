@@ -10,10 +10,9 @@ import Foundation
 import NetworkHelper
 
 struct NYTAPIClient {
-    static func getPix(for city: String, completion: @escaping (Result<TopStories, AppError>) -> ()) {
-        
-        
-        let NYTEndpointURL = ""
+    
+    static func fetchTopStories(for category: String, completion: @escaping (Result<[Article], AppError>) -> ()) {
+        let NYTEndpointURL = "https://api.nytimes.com/svc/topstories/v2/\(category).json?api-key="
         
         guard let url = URL(string: NYTEndpointURL) else {
             completion(.failure(.badURL(NYTEndpointURL)))
@@ -29,8 +28,8 @@ struct NYTAPIClient {
             case .success(let data):
                 do {
                     let topStories = try JSONDecoder().decode(TopStories.self, from: data)
-                    let pixHits = topStories
-                    completion(.success(pixHits))
+                    let results = topStories.results
+                    completion(.success(results))
                 } catch {
                     completion(.failure(.decodingError(error)))
                 }
