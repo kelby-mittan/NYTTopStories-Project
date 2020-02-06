@@ -16,6 +16,7 @@
 		02822E9723EC6E56001B55AD /* NewsFeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02822E9623EC6E56001B55AD /* NewsFeedViewController.swift */; };
 		02822E9923EC6E72001B55AD /* SavedArticleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02822E9823EC6E72001B55AD /* SavedArticleViewController.swift */; };
 		02822E9B23EC6E89001B55AD /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02822E9A23EC6E89001B55AD /* SettingsViewController.swift */; };
+		02822E9D23EC7144001B55AD /* NewsFeedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02822E9C23EC7144001B55AD /* NewsFeedView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,6 +43,7 @@
 		02822E9623EC6E56001B55AD /* NewsFeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsFeedViewController.swift; sourceTree = "<group>"; };
 		02822E9823EC6E72001B55AD /* SavedArticleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedArticleViewController.swift; sourceTree = "<group>"; };
 		02822E9A23EC6E89001B55AD /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		02822E9C23EC7144001B55AD /* NewsFeedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsFeedView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +85,7 @@
 		02822E6D23EC6B65001B55AD /* NYTTopStories */ = {
 			isa = PBXGroup;
 			children = (
+				02822E9E23EC7803001B55AD /* Cell */,
 				02822E9523EC6E32001B55AD /* Models */,
 				02822E9323EC6DEB001B55AD /* Views */,
 				02822E9023EC6C11001B55AD /* Controllers */,
@@ -115,6 +118,7 @@
 		02822E9323EC6DEB001B55AD /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				02822E9C23EC7144001B55AD /* NewsFeedView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -135,6 +139,13 @@
 			children = (
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		02822E9E23EC7803001B55AD /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -241,6 +252,7 @@
 				02822E9923EC6E72001B55AD /* SavedArticleViewController.swift in Sources */,
 				02822E9223EC6C33001B55AD /* TopStoriesTabController.swift in Sources */,
 				02822E7123EC6B65001B55AD /* SceneDelegate.swift in Sources */,
+				02822E9D23EC7144001B55AD /* NewsFeedView.swift in Sources */,
 				02822E9723EC6E56001B55AD /* NewsFeedViewController.swift in Sources */,
 				02822E9B23EC6E89001B55AD /* SettingsViewController.swift in Sources */,
 			);
