@@ -25,9 +25,20 @@ class NewsFeedViewController: UIViewController {
         newsFeedView.collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "articleCell")
         
         view.backgroundColor = .systemBackground
+        fetchStories()
     }
     
 
+    private func fetchStories() {
+        NYTAPIClient.fetchTopStories(for: "Technology") { (result) in
+            switch result {
+            case .failure(let error):
+                print(error)
+            case .success(let articles):
+                dump(articles)
+            }
+        }
+    }
     
 
 }
