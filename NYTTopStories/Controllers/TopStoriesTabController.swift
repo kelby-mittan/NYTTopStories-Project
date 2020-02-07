@@ -11,7 +11,7 @@ import UIKit
 class TopStoriesTabController: UITabBarController {
     
     private lazy var newsFeedVC: NewsFeedViewController = {
-       let viewController = NewsFeedViewController()
+        let viewController = NewsFeedViewController()
         viewController.tabBarItem = UITabBarItem(title: "News Feed", image: UIImage(systemName: "eyeglasses"), tag: 0)
         return viewController
     }()
@@ -31,7 +31,7 @@ class TopStoriesTabController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        viewControllers = [newsFeedVC, savedArticlesVC, settingsVC]
+        viewControllers = [UINavigationController(rootViewController: newsFeedVC), UINavigationController(rootViewController: savedArticlesVC), UINavigationController(rootViewController: settingsVC)]
     }
     
     

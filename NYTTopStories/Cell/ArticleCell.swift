@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import ImageKit
 
 class ArticleCell: UICollectionViewCell {
     
@@ -85,6 +86,27 @@ class ArticleCell: UICollectionViewCell {
             abstractHeadline.trailingAnchor.constraint(equalTo: articleTitle.trailingAnchor),
             abstractHeadline.topAnchor.constraint(equalTo: articleTitle.bottomAnchor, constant: 8)
         ])
+    }
+    
+    public func configureCell(with article: Article) {
+        
+        articleTitle.text = article.title
+        abstractHeadline.text = article.abstract
+        
+        let thumbnail = article.getArticleURL(for: .thumbLarge)
+        
+        articleImageView.getImage(with: thumbnail) { [weak self](result) in
+            switch result {
+            case .failure:
+                DispatchQueue.main.async {
+                    self?.articleImageView.image = UIImage(systemName: "exclamationmark-octagon")
+                }
+            case .success(let image):
+                DispatchQueue.main.async {
+                    self?.articleImageView.image = image
+                }
+            }
+        }
     }
 }
 

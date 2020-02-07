@@ -12,6 +12,14 @@ class NewsFeedViewController: UIViewController {
 
     private let newsFeedView = NewsFeedView()
     
+    private var newsArticles = [Article]() {
+        didSet {
+            DispatchQueue.main.async {
+                self.newsFeedView.collectionView.reloadData()
+            }
+        }
+    }
+    
     override func loadView() {
         view = newsFeedView
     }
@@ -29,13 +37,14 @@ class NewsFeedViewController: UIViewController {
     }
     
 
-    private func fetchStories() {
-        NYTAPIClient.fetchTopStories(for: "Technology") { (result) in
+    private func fetchStories(for section: String = "Technology") {
+        NYTAPIClient.fetchTopStories(for: "Technology") { [weak self] (result) in
             switch result {
             case .failure(let error):
                 print(error)
             case .success(let articles):
                 dump(articles)
+                self?.newsArticles = articles
             }
         }
     }
@@ -45,12 +54,17 @@ class NewsFeedViewController: UIViewController {
 
 extension NewsFeedViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 50
+        return newsArticles.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "articleCell", for: indexPath)
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "articleCell", for: indexPath) as? ArticleCell else {
+            fatalError("could not deque cell")
+        }
+        let article = newsArticles[indexPath.row]
+        
         cell.backgroundColor = .systemBackground
+        cell.configureCell(with: article)
         return cell
     }
     
@@ -62,10 +76,23 @@ extension NewsFeedViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
         let maxSize: CGSize = UIScreen.main.bounds.size
-        let itemWidth: CGFloat = maxSize.width
+        let itemWidth: CGFloat = maxSize.width * 0.9
         let itemHeight: CGFloat = maxSize.height * 0.30
         
-        return CGSize(width: itemWidth, height: itemHeight)
+        return CGSize(width: itemWidth, height: itemHeight * 0.75)
     }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        let article = newsArticles[indexPath.row]
+        let articleDetailVC = ArticleDetailViewController()
+        
+        // TODO: after assessment we will be using initialzers as dependency injection mechanisms
+        
+        articleDetailVC.article = article
+        
+        navigationController?.pushViewController(articleDetailVC, animated: true)
+    }
+    
     
 }

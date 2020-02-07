@@ -8,6 +8,12 @@
 
 import Foundation
 
+enum ImageFormat: String {
+    case superJumbon = "superJumbo"
+    case thumbLarge = "thumbLarge"
+    case standardThumbnail = "Standard Thumbnail"
+    case normal = "Normal"
+}
 
 struct TopStories: Codable {
     let section: String
@@ -43,4 +49,14 @@ struct Multimedia: Codable {
     let height: Double
     let width: Double
     let caption: String
+}
+
+
+extension Article {
+    func getArticleURL(for imageFormat: ImageFormat) -> String {
+        let result = multimedia.filter { $0.format == imageFormat.rawValue }
+        guard let firstResult = result.first else { return "Empty" }
+        
+        return firstResult.url
+    }
 }
