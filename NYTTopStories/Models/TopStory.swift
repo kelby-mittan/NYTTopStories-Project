@@ -15,7 +15,7 @@ enum ImageFormat: String {
     case normal = "Normal"
 }
 
-struct TopStories: Codable {
+struct TopStories: Codable & Equatable {
     let section: String
     let lastUpdated: String
     let results: [Article]
@@ -28,7 +28,7 @@ struct TopStories: Codable {
     
 }
 
-struct Article: Codable {
+struct Article: Codable & Equatable {
     let section: String
     let title: String
     let abstract: String
@@ -43,7 +43,7 @@ struct Article: Codable {
     }
 }
 
-struct Multimedia: Codable {
+struct Multimedia: Codable & Equatable{
     let url: String
     let format: String
     let height: Double

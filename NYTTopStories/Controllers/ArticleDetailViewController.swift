@@ -14,6 +14,8 @@ class ArticleDetailViewController: UIViewController {
 
     private let detailView = ArticleDetailView()
     
+    public var dataPersistence: DataPersistence<Article>!
+    
     public var article: Article?
     
     override func loadView() {
@@ -54,7 +56,13 @@ class ArticleDetailViewController: UIViewController {
     }
     
     @objc func saveArticleButtonPressed(_ sender: UIBarButtonItem) {
-        print("button pressed")
+        guard let article = article else { return }
+        
+        do {
+            try dataPersistence.createItem(article)
+        } catch {
+            print("error: \(error)")
+        }
     }
 
 }
