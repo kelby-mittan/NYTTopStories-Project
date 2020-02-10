@@ -94,6 +94,16 @@ extension SavedArticleViewController: UICollectionViewDelegateFlowLayout {
         return CGSize(width: itemWidth, height: itemHeight)
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        // programatically setup a segue
+        let detailArticleVC = ArticleDetailViewController()
+        let article = savedArticles[indexPath.row]
+        
+        detailArticleVC.dataPersistence = dataPersistence
+        detailArticleVC.article = article
+        navigationController?.pushViewController(detailArticleVC, animated: true)
+    }
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
     }

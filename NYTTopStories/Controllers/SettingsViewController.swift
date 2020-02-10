@@ -20,7 +20,7 @@ class SettingsViewController: UIViewController {
         view = settingsView
     }
     
-    private let sections = ["Arts", "Automobiles", "Books", "Business", "Fashion", "Food", "Health", "Home", "Insider", "Magazine", "Movies", "NYRegion", "Obituaries", "Opinion", "Politics", "RealeEstate", "Science", "Sports", "SundayReview", "Technology", "Theater", "T-Magazine", "Travel", "Upshot", "US", "World"]
+    private let sections = ["Arts", "Automobiles", "Books", "Business", "Fashion", "Food", "Health", "Insider", "Magazine", "Movies", "NYRegion", "Obituaries", "Opinion", "Politics", "RealeEstate", "Science", "Sports", "SundayReview", "Technology", "Theater", "T-Magazine", "Travel", "Upshot", "US", "World"]
     
     
     override func viewDidLoad() {
@@ -55,7 +55,9 @@ extension SettingsViewController: UIPickerViewDelegate {
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         
-        guard let recentCategory = UserDefaults.standard.set(sections[row], forKey: RecentCategoryKey.category) as? String else { return }
+        let category = sections[row]
+        
+        UserDefaults.standard.set(category, forKey: RecentCategoryKey.category)
        
     }
 }

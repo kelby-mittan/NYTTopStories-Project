@@ -18,6 +18,8 @@ class ArticleDetailViewController: UIViewController {
     
     public var article: Article?
     
+    private var savedArticles = [Article]()
+    
     override func loadView() {
         view = detailView
     }
@@ -28,6 +30,7 @@ class ArticleDetailViewController: UIViewController {
         
         updateUI()
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "bookmark"), style: .plain, target: self, action: #selector(saveArticleButtonPressed(_:)))
+        checkSaved()
     }
     
     private func updateUI() {
@@ -52,7 +55,6 @@ class ArticleDetailViewController: UIViewController {
                 }
             }
         }
-
     }
     
     @objc func saveArticleButtonPressed(_ sender: UIBarButtonItem) {
@@ -62,6 +64,19 @@ class ArticleDetailViewController: UIViewController {
             try dataPersistence.createItem(article)
         } catch {
             print("error: \(error)")
+        }
+    }
+    
+    private func checkSaved() {
+        
+        do {
+            savedArticles = try dataPersistence.loadItems()
+        } catch {
+            print("error \(error)")
+        }
+        
+        if savedArticles.contains(article!) {
+            navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "bookmark.fill"), style: .plain, target: self, action: #selector(saveArticleButtonPressed(_:)))
         }
     }
 

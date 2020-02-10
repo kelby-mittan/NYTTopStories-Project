@@ -23,6 +23,12 @@ class NewsFeedViewController: UIViewController {
         }
     }
     
+    private var sectionName = "Technology" {
+        didSet {
+            // TODO:
+        }
+    }
+    
     override func loadView() {
         view = newsFeedView
     }
@@ -39,9 +45,30 @@ class NewsFeedViewController: UIViewController {
         fetchStories()
     }
     
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        fetchStories()
+    }
+    
 
     private func fetchStories(for section: String = "Technology") {
-        NYTAPIClient.fetchTopStories(for: "Technology") { [weak self] (result) in
+        
+        if let sectionName = UserDefaults.standard.object(forKey: RecentCategoryKey.category) as? String {
+            
+            if sectionName != self.sectionName {
+                queryAPI(for: sectionName)
+                self.sectionName = sectionName
+            }
+        } else {
+            // use the default section name
+            queryAPI(for: sectionName)
+        }
+        
+    }
+    
+    private func queryAPI(for section: String) {
+        NYTAPIClient.fetchTopStories(for: section) { [weak self] (result) in
             switch result {
             case .failure(let error):
                 print(error)
